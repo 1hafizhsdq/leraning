@@ -3,31 +3,34 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  int number = 0;
-  void tekanTombol() {
-    setState(() {
-      number = number + 1;
-    });
-  }
+  String message = "ini adalah text";
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text("Statefull")),
+        appBar: AppBar(
+          title: Text("Anonymous Method"),
+        ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(number.toString(),style: TextStyle(fontSize: 10 + number.toDouble()),),
+            children: [
+              Text(message),
               RaisedButton(
-                child: Text("Tambah Bilangan"),
-                onPressed: tekanTombol,
+                child: Text("Tekan Saya"),
+                onPressed: (){
+                  setState(() {
+                    message = "tombol sudah ditekan";
+                  });
+                },
               )
             ],
           ),
