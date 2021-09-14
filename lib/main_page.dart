@@ -11,7 +11,7 @@ class MainPage extends StatelessWidget {
         child: RaisedButton(
           child: Text("Go To Second Page"),
           onPressed: () {
-            Get.to(SecondPage());
+            Get.toNamed('/second?name=Hafizh Assidiq&from=Indonesia', arguments: ['Hello','World']);
           },
         ),
       ),

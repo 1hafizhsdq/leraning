@@ -10,7 +10,7 @@ class LoginPage extends StatelessWidget {
         child: RaisedButton(
           child: Text("Login"),
           onPressed: () {
-            Get.off(MainPage());
+            Get.offNamed('/main');
           },
         ),
       ),

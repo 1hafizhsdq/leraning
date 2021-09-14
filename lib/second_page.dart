@@ -17,13 +17,22 @@ class SecondPage extends StatelessWidget {
                 Get.back();
               },
             ),
-            RaisedButton(
-              child: Text("Go To Third Page"),
-              onPressed: () async {
-                String result = await Get.to<String>(ThirdPage());
-                print("=======>"+result);
-              },
-            ),
+            Column(
+              children: (Get.arguments as List<String>)
+              .map((e) => Text(e))
+              .toList() + 
+              [
+                Text(Get.parameters['name']),
+                Text(Get.parameters['from']),
+              ],
+            )
+            // RaisedButton(
+            //   child: Text("Go To Third Page"),
+            //   onPressed: () async {
+            //     String result = await Get.to<String>(ThirdPage());
+            //     print("=======>"+result);
+            //   },
+            // ),
           ],
         ),
       ),
