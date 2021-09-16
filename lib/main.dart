@@ -11,50 +11,45 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text("Flexible Layout"),),
-        body: Column(
-          children: [
-            Flexible(
-              flex: 1,
-              child: Row(
-                children: [
-                  Flexible(
-                    flex: 1,
-                    child: Container(
-                      color: Colors.red,
-                    ),
-                  ),
-                  Flexible(
-                    flex: 1,
-                    child: Container(
-                      color: Colors.green,
-                    ),
-                  ),
-                  Flexible(
-                    flex: 1,
-                    child: Container(
-                      color: Colors.purple,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Flexible(
-              flex: 2,
-              child: Container(
-                color: Colors.amber,
-              ),
-            ),
-            Flexible(
-              flex: 1,
-              child: Container(
-                color: Colors.blue,
-              ),
-            ),
-          ],
-        ),
-      ),
+      home: MainPage(),
     );
+  }
+}
+
+class MainPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Media Query"),
+      ),
+      body: (MediaQuery.of(context).orientation == Orientation.portrait)
+          ? Column(
+              children: GenerateContainers,
+            )
+          : Row(
+              children: GenerateContainers,
+            ),
+    );
+  }
+
+  List<Widget> get GenerateContainers {
+    return [
+      Container(
+        color: Colors.red,
+        width: 100,
+        height: 100,
+      ),
+      Container(
+        color: Colors.green,
+        width: 100,
+        height: 100,
+      ),
+      Container(
+        color: Colors.blue,
+        width: 100,
+        height: 100,
+      ),
+    ];
   }
 }
